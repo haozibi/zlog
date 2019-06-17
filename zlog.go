@@ -10,10 +10,13 @@ import (
 var zlog zerolog.Logger
 
 var (
+	// TimeFieldFormat time format
 	TimeFieldFormat = time.RFC3339
 
+	// TimeFormatUnixNano time format
 	TimeFormatUnixNano = "2006-01-02 15:04:05.999999999"
 
+	// NoColor if set color
 	NoColor = false
 )
 
@@ -55,6 +58,7 @@ type option struct {
 	color      bool
 }
 
+// LogOpt log option
 type LogOpt func(o *option)
 
 // WithDebug set if debug,debug output line num

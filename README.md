@@ -25,7 +25,7 @@ import (
 
 func init() {
 
-	zlog.NewBasicLog(os.Stdout)
+	zlog.NewBasicLog(os.Stdout,WithNoColor(true), WithDebug(true))
 	// zlog.NewJSONLog(os.Stdout)
 }
 
