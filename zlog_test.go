@@ -20,3 +20,24 @@ func TestNewBasicLog(t *testing.T) {
 
 	Debugf("%s", "ok")
 }
+
+func TestBasicWithConfig(t *testing.T) {
+
+	w := os.Stdout
+
+	NewBasicLog(w)
+	ZDebug().Str("Test", "ok").Msg("[With]")
+
+	NewBasicLog(w, WithNoColor(true))
+	ZDebug().Str("Test", "ok").Msg("[With]")
+
+	NewBasicLog(w, WithTimeFormat("2006-01-02"), WithNoColor(true))
+	ZDebug().Str("Test", "ok").Msg("[With]")
+
+	NewBasicLog(w, WithTimeFormat("2006-01-02"), WithNoColor(true), WithDebug(true))
+	ZDebug().Str("Test", "ok").Msg("[With]")
+
+	NewBasicLog(w, WithTimeFormat("2006-01-02"), WithNoColor(true), WithDebug(true), WithDeep(1))
+	ZDebug().Str("Test", "ok").Msg("[With]")
+
+}
