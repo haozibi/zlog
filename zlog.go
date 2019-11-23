@@ -128,7 +128,7 @@ func (f optionFunc) apply(o *options) {
 	f(o)
 }
 
-// WithDebug set if debug,debug output line num
+// WithDebug enable debug mode, show code line num
 func WithDebug() Option {
 	return optionFunc(func(o *options) {
 		o.debug = true
@@ -142,7 +142,7 @@ func WithDeep(n int) Option {
 	})
 }
 
-// WithColor set if has color
+// WithColor enable log color
 func WithColor() Option {
 	return optionFunc(func(o *options) {
 		o.nocolor = false
