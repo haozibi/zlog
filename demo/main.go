@@ -33,6 +33,7 @@ func main() {
 	err = doErr()
 	if err != nil {
 		zlog.ZError().Err(err).Msg("[do error]")
+		zlog.ZError().Stack().Err(err).Msg("[do error]")
 	}
 
 }
