@@ -3,7 +3,7 @@ package zlog
 import "os"
 
 func Example() {
-	NewBasicLog(os.Stdout, WithNoColor(true), WithDebug(true), WithTimeFormat("2006"))
+	NewBasic(os.Stdout, WithDebug(), WithTimeFormat("2006"))
 	// zlog.NewJSONLog(os.Stdout)
 
 	ZInfo().
