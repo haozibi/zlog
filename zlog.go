@@ -59,6 +59,7 @@ func newLog(w io.Writer, opts ...Option) zerolog.Context {
 	}
 
 	zerolog.TimeFieldFormat = TimeFormatUnixNano
+	zerolog.SetGlobalLevel(zerolog.Level(d.level))
 	zerolog.ErrorStackMarshaler = d.marshalStack
 	z := zerolog.New(w).With().Timestamp()
 
@@ -114,6 +115,7 @@ type options struct {
 	deep         int
 	timeFormat   string
 	nocolor      bool
+	level        Level
 	marshalStack func(err error) interface{}
 }
 
@@ -155,3 +157,33 @@ func WithTimeFormat(format string) Option {
 		o.timeFormat = format
 	})
 }
+
+// WithLevel set log output level
+func WithLevel(l Level) Option {
+	return optionFunc(func(o *options) {
+		o.level = l
+	})
+}
+
+// Level defines log levels.
+type Level int8
+
+const (
+	// DebugLevel defines debug log level.
+	DebugLevel Level = iota
+	// InfoLevel defines info log level.
+	InfoLevel
+	// WarnLevel defines warn log level.
+	WarnLevel
+	// ErrorLevel defines error log level.
+	ErrorLevel
+	// FatalLevel defines fatal log level.
+	FatalLevel
+	// NoLevel defines an absent log level.
+	NoLevel
+	// Disabled disables the logger.
+	Disabled
+
+	// TraceLevel defines trace log level.
+	TraceLevel Level = -1
+)

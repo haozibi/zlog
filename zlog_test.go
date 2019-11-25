@@ -62,3 +62,15 @@ func TestLogStack(t *testing.T) {
 	ZInfo().Stack().Err(err2).Msg("[err2]")
 	fmt.Println(out2.String())
 }
+
+func TestLogLevel(t *testing.T) {
+
+	out := &bytes.Buffer{}
+	NewBasic(out, WithLevel(InfoLevel))
+
+	ZDebug().Msg("debug")
+	ZInfo().Msg("info")
+
+	got := out.String()
+	fmt.Println(got)
+}
