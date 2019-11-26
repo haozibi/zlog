@@ -106,6 +106,7 @@ func defaultOptions() *options {
 		deep:         2,
 		nocolor:      true,
 		timeFormat:   TimeFormatUnixNano,
+		level:        DebugLevel,
 		marshalStack: pkgerrors.MarshalStack,
 	}
 }
